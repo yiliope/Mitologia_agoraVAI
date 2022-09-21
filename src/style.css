@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@700&display=swap');
+
+    		body{background: #e6e6e6;
+    			width: 90%;
+    			margin:  auto;
+    			font-size:  24px;
+    			text-align: justify;}
+
+    		h1{ font-size: 65px; 
+    			padding: 100px;
+    			text-align: center;
+    			background-size:  cover;
+    			font-family: 'The Nautigal', cursive;
+    			font-size:  200px;
+    		}
+    		h2{margin-top:150px ; }
+    		p{ margin-top:50px ; }
+    		.bananacaos{width:500px;
+    			        height:500px;
+    			         margin:auto;}
+    		.divCaos{
+    				margin-top:  200px;
+    			width: 100%;
+    				text-align:  center}
+    		.4fcaixa{width:100vw; 
+    		             }
+    		.banan4{width:24.5% ; 
+    		        height:350px ;} 
+
+    		.filhoteDosFilhotes_img{ width:19% ; 
+                                      height: 340px;} 
+            .doIncesto_cxa{ text-align:center ; } 
+
+            .incesto6_cxa{ width:100% ;
+                           height: 500px ;  }
+
+            .incesto6_img{ width:16% ;
+            	           height:320px;
+            	          text-align: center;}
+
+            .come_cxa{ width: 100%;
+            	       height: 200px;
+            	       text-align: center}
+
+            .come_img { width:20% ;
+            	        height: 200px;
+            	        text-align: center;
+            	       
+            	      }
+
+.container { display: grid; grid-template-columns: 100px 100px; grid-template-rows: 100px; grid-column-gap: 5px; } .item { background: #ce8888; }
+
+.amorecome{ text-align: center;}
+
+.gtita {
+	text-align: center;
+}
+
+.fimamem{ width:49.8% ;}
+
+@media only screen and ( max-width: 400px){
+
+body{
+   margin:  0;
+}
+h1{ font-size:45px;
+
+}
+
+h2{ margin-top:50px ;
+    font-size: 20px;
+    max-width: 400px;
+}
+
+p{  font-size: 15px;
+   width:350px ;
+
+}
+
+.bananacaos{
+width: 350px ;
+
+}
+
+.banan4{
+   width: 350px;
+}
+
+.filhoteDosFilhotes_img {
+   width: 350px;
+
+}
+
+.doIncesto_img {
+   width: 350px;
+
+}
+
+.incesto6_img {
+   width: 350px;
+
+}
+
+.come_img{
+   width: 350px;
+
+}
+
+.amorecome img{
+   width: 350px;
+}
+
+.gtita img{
+   width: 350px;
+
+}
+.fimamem{
+   width: 350px;
+
+}

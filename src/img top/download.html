@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts;e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v18.1 (Yoast SEO v18.3) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>Nix, quem é? Origem, filhos e personificação da noite</title><link rel="stylesheet" href="https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/7a31c79828c673b01b7e1374f8029296.css" media="all" data-minify="1" />
+	<meta name="description" content="Nix é a deusa da noite segundo a mitologia grega. Apesar da representação feminina, também é vista com o rosto coberto pela escuridão." />
+	<link rel="canonical" href="https://segredosdomundo.r7.com/nix-deusa-historia/" />
+	<meta property="og:locale" content="pt_BR" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="Nix, quem é? Origem, filhos e personificação da noite - Segredos do Mundo" />
+	<meta property="og:description" content="Nix é a deusa da noite segundo a mitologia grega. Apesar da representação feminina, também é vista com o rosto coberto pela escuridão." />
+	<meta property="og:url" content="https://segredosdomundo.r7.com/nix-deusa-historia/" />
+	<meta property="og:site_name" content="Segredos do Mundo" />
+	<meta property="article:publisher" content="https://www.facebook.com/Segredos.Mundo" />
+	<meta property="article:published_time" content="2020-06-13T11:00:51+00:00" />
+	<meta property="article:modified_time" content="2022-03-11T19:12:33+00:00" />
+	<meta property="og:image" content="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite.jpg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="735" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta name="twitter:label1" content="Escrito por" />
+	<meta name="twitter:data1" content="Danyla Martins" />
+	<meta name="twitter:label2" content="Est. tempo de leitura" />
+	<meta name="twitter:data2" content="5 minutos" />
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel='dns-prefetch' href='//cdn.taboola.com' />
+<link rel='dns-prefetch' href='//d5y9g7a5.rocketcdn.me' />
+
+<link href='https://d5y9g7a5.rocketcdn.me' rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Feed para Segredos do Mundo &raquo;" href="https://segredosdomundo.r7.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Segredos do Mundo &raquo;" href="https://segredosdomundo.r7.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Segredos do Mundo &raquo; Nix, quem é? Origem, filhos e personificação da noite" href="https://segredosdomundo.r7.com/nix-deusa-historia/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Segredos do Mundo &raquo; Stories Feed" href="https://segredosdomundo.r7.com/web-stories/feed/"><style id='quads-ad-label-inline-css'>
+.quads-ad-label{display:none}  .quads-ad-label.quads-ad-label-new{display:block}
+</style>
+
+
+<style id='rocket-lazyload-inline-css'>
+.rll-youtube-player{position:relative;padding-bottom:56.23%;height:0;overflow:hidden;max-width:100%;}.rll-youtube-player:focus-within{outline: 2px solid currentColor;outline-offset: 5px;}.rll-youtube-player iframe{position:absolute;top:0;left:0;width:100%;height:100%;z-index:100;background:0 0}.rll-youtube-player img{bottom:0;display:block;left:0;margin:auto;max-width:100%;width:100%;position:absolute;right:0;top:0;border:none;height:auto;-webkit-transition:.4s all;-moz-transition:.4s all;transition:.4s all}.rll-youtube-player img:hover{-webkit-filter:brightness(75%)}.rll-youtube-player .play{height:100%;width:100%;left:0;top:0;position:absolute;background:url(https://d5y9g7a5.rocketcdn.me/wp-content/plugins/wp-rocket/assets/img/youtube.png) no-repeat center;background-color: transparent !important;cursor:pointer;border:none;}
+</style>
+<style id='quads-styles-inline-css'>
+
+    .quads-location ins.adsbygoogle {
+        background: transparent !important;
+    }
+    
+    .quads.quads_ad_container { display: grid; grid-template-columns: auto; grid-gap: 10px; padding: 10px; }
+    .grid_image{animation: fadeIn 0.5s;-webkit-animation: fadeIn 0.5s;-moz-animation: fadeIn 0.5s;
+        -o-animation: fadeIn 0.5s;-ms-animation: fadeIn 0.5s;}
+    .quads-ad-label { font-size: 12px; text-align: center; color: #333;}
+    .quads_click_impression { display: none;}
+</style>
+<script type="rocketlazyloadscript" src='https://d5y9g7a5.rocketcdn.me/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script id='quads_ads_front-js-extra'>
+var quads_analytics = {"ajax_url":"https:\/\/segredosdomundo.r7.com\/wp-admin\/admin-ajax.php","quads_front_nonce":"590f1ba426"};
+</script>
+<script type="rocketlazyloadscript" src='https://d5y9g7a5.rocketcdn.me/wp-content/plugins/quick-adsense-reloaded/assets/js/performance_tracking.min.js?ver=2.0.49' id='quads_ads_front-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/wp-content/plugins/wp-quads-pro/assets/js/ads.js?ver=1649896147' id='quads-ad-ga-js' defer></script>
+<link rel="https://api.w.org/" href="https://segredosdomundo.r7.com/wp-json/" /><link rel="alternate" type="application/json" href="https://segredosdomundo.r7.com/wp-json/wp/v2/posts/76104" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://segredosdomundo.r7.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://d5y9g7a5.rocketcdn.me/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 5.8.2" />
+<link rel='shortlink' href='https://segredosdomundo.r7.com/?p=76104' />
+<link rel="alternate" type="application/json+oembed" href="https://segredosdomundo.r7.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsegredosdomundo.r7.com%2Fnix-deusa-historia%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://segredosdomundo.r7.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsegredosdomundo.r7.com%2Fnix-deusa-historia%2F&#038;format=xml" />
+<script type="rocketlazyloadscript" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" defer></script><script type="rocketlazyloadscript" data-rocket-type='text/javascript'>document.cookie = 'quads_browser_width='+screen.width;</script><script type="application/ld+json">{"@context":"https:\/\/schema.org\/","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/segredosdomundo.r7.com\/nix-deusa-historia\/"},"headline":"Nix, quem \u00e9? Origem, filhos e personifica\u00e7\u00e3o da noite","image":{"@type":"ImageObject","url":"https:\/\/segredosdomundo.r7.com\/wp-content\/uploads\/2020\/06\/nix-quem-e-origem-filhos-e-personificacao-da-noite.jpg","width":1200,"height":735},"datePublished":"2020-06-13T08:00:51-03:00","dateModified":"2022-03-11T16:12:33-03:00","author":{"@type":"Person","name":"Danyla Martins"},"publisher":{"@type":"Organization","name":"Segredos do Mundo","logo":{"@type":"ImageObject","url":"https:\/\/segredosdomundo.r7.com\/wp-content\/themes\/ss\/dist\/image\/logo-dark.png"}},"description":"Nix \u00e9 a deusa da noite segundo a mitologia grega. Apesar da representa\u00e7\u00e3o feminina, tamb\u00e9m \u00e9 vista com o rosto coberto pela escurid\u00e3o."}</script>
+<!-- Schema & Structured Data For WP v1.9.96 - -->
+<script type="application/ld+json" class="saswp-schema-markup-output">
+[{"@context":"https:\/\/schema.org","@type":"Organization","@id":"https:\/\/segredosdomundo.r7.com#Organization","name":"Segredos do Mundo","url":"https:\/\/segredosdomundo.r7.com","sameAs":[]}]
+</script>
+
+<style type="text/css">.broken_link, a.broken_link {
+	text-decoration: line-through;
+}</style>
+		<style>
+			#wp-admin-bar-pvc-post-views .pvc-graph-container { padding-top: 6px; padding-bottom: 6px; position: relative; display: block; height: 100%; box-sizing: border-box; }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph {
+				display: inline-block;
+				width: 1px;
+				margin-right: 1px;
+				background-color: #ccc;
+				vertical-align: baseline;
+			}
+			#wp-admin-bar-pvc-post-views .pvc-line-graph:hover { background-color: #eee; }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-0 { height: 1% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-1 { height: 5% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-2 { height: 10% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-3 { height: 15% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-4 { height: 20% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-5 { height: 25% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-6 { height: 30% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-7 { height: 35% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-8 { height: 40% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-9 { height: 45% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-10 { height: 50% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-11 { height: 55% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-12 { height: 60% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-13 { height: 65% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-14 { height: 70% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-15 { height: 75% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-16 { height: 80% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-17 { height: 85% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-18 { height: 90% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-19 { height: 95% }
+			#wp-admin-bar-pvc-post-views .pvc-line-graph-20 { height: 100% }
+		</style><link rel="icon" href="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2018/08/favicon-segredos-do-mundo-148x148-125x125.png" sizes="32x32" />
+<link rel="icon" href="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2018/08/favicon-segredos-do-mundo-148x148.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2018/08/favicon-segredos-do-mundo-148x148.png" />
+<meta name="msapplication-TileImage" content="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2018/08/favicon-segredos-do-mundo-148x148.png" />
+<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript></head>
+<body class="post-template-default single single-post postid-76104 single-format-standard header-light">
+
+<script type="rocketlazyloadscript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1360360021251685"
+     crossorigin="anonymous"></script>
+	 
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+  window._taboola = window._taboola || [];
+  _taboola.push({article:'auto'});
+  !function (e, f, u, i) {
+    if (!document.getElementById(i)){
+      e.async = 1;
+      e.src = u;
+      e.id = i;
+      f.parentNode.insertBefore(e, f);
+    }
+  }(document.createElement('script'),
+  document.getElementsByTagName('script')[0],
+  '//cdn.taboola.com/libtrc/segredosdomundo-network/loader.js',
+  'tb_loader_script');
+  if(window.performance && typeof window.performance.mark == 'function')
+    {window.performance.mark('tbl_ic');}
+</script>
+
+<div id="page">
+	    <header id="header">
+				<div class="row-1">
+    <div class="container">
+        <div class="columns-wrapper">
+            <div class="column column-logo">
+                <a href="https://segredosdomundo.r7.com" class="dim-on-hover logo-wrapper" rel="home">
+                    <svg class="logo-carrier" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="38" xmlns:v="https://vecta.io/nano"><image width="200" height="38" xlink:href="data:img/png;base64,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"/></svg>
+                </a>
+            </div>
+            <div id="primary-menu-wrapper" class="column column-menu">
+                <div class="header d-block d-lg-none">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <p class="h3 mb-0 text-dark">MENU</p>
+                        <button type="button"
+                                data-target="#primary-menu-wrapper"
+                                class="h1 mb-0 btn-clean dim-on-hover">&times;
+                        </button>
+                    </div>
+                </div>
+                <nav>
+					<div class="menu-menu-principal-container"><ul id="primary-menu" class=""><li id="menu-item-46217" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-46217"><a href="https://segredosdomundo.r7.com/mais-lidas/">Mais Lidas</a></li>
+<li id="menu-item-47414" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-47414"><a href="https://segredosdomundo.r7.com/curiosidades/">Curiosidades</a></li>
+<li id="menu-item-47416" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47416"><a href="https://segredosdomundo.r7.com/mundo/">Mundo Animal</a></li>
+<li id="menu-item-47415" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47415"><a href="https://segredosdomundo.r7.com/ciencia/">Ciência &#038; Tecnologia</a></li>
+<li id="menu-item-47417" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47417"><a href="https://segredosdomundo.r7.com/historia/">História</a></li>
+<li id="menu-item-47418" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-47418"><a href="https://segredosdomundo.r7.com/viagem/">Viagem</a></li>
+</ul></div>                </nav>
+            </div>
+            <div class="column column-search">
+				<button type="button"
+        data-toggle="modal"
+        data-target="#collapsable-search-form"
+        class="d-inline-flex btn-clean dim-on-hover clr-inherit"
+        onclick="setTimeout(function() { jQuery('#collapsable-search-form input').focus() }, 500);"
+        aria-controls="collapsable-search-form">
+    <span class="themess-search"></span>
+</button>
+	            </div>
+            <div class="column column-stripes">
+                <button type="button"
+                        data-target="#primary-menu-wrapper"
+                        class="d-inline-block btn-clean dim-on-hover clr-inherit themess-menu icon"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="separator"></div>				 </header>
+		 
+		
+		
+<div class="content-header"></div><div id='content'>
+
+<div class='clearfix container'>
+<div id='primary' class=''><main id='main'>
+<div class="pt-4">
+    <div class="before-content">
+		            <a href="https://segredosdomundo.r7.com/curiosidades/"
+               class="mb-2 border border-light badge badge-primary">Curiosidades</a>
+		        <div class="title-wrapper">
+            <h1>Nix, quem é? Origem, filhos e personificação da noite</h1>
+        </div>
+		            <p class="excerpt-carrier dim">Nix é a deusa da noite segundo a mitologia grega. Apesar da representação feminina, também é vista com o rosto coberto pela escuridão.</p>
+		        <div class="mt-3 border bg-light rounded">
+            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                <div class="m-2">
+                    <small>
+                        <p class="mb-0">Por <a href='https://segredosdomundo.r7.com/author/danyla/' rel='dofollow' class='dim-on-hover'>Danyla Martins</a></p>
+                    </small>
+                </div>
+
+                <div class="m-2 lh-1">
+                    <div class="share-buttons-wrapper">
+						<a href="whatsapp://send?text=https%3A%2F%2Fsegredosdomundo.r7.com%2Fnix-deusa-historia%2F"
+           class="themess-whatsapp rounded dim-on-hover bg-colorful d-inline-block text-decoration-none share-button whatsapp-icon"
+           style="min-width:28px;height:28px;line-height:28px;font-size:1rem;text-align:center;color:#fff; "
+           target="_blank"
+           title="Compartilhar no WhatsApp"></a><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsegredosdomundo.r7.com%2Fnix-deusa-historia%2F"
+           class="themess-facebook rounded dim-on-hover bg-colorful d-inline-block text-decoration-none share-button facebook-icon"
+           style="min-width:28px;height:28px;line-height:28px;font-size:1rem;text-align:center;color:#fff; "
+           target="_blank"
+           title="Compartilhar no Facebook"></a><a href="https://twitter.com/share?text=Nix+%C3%A9+a+deusa+da+noite+segundo+a+mitologia+grega.+Apesar+da+representa%C3%A7%C3%A3o+feminina%2C+tamb%C3%A9m+%C3%A9+vista+com+o+rosto+coberto+pela+escurid%C3%A3o.&url=https%3A%2F%2Fsegredosdomundo.r7.com%2Fnix-deusa-historia%2F"
+           class="themess-twitter rounded dim-on-hover bg-colorful d-inline-block text-decoration-none share-button twitter-icon"
+           style="min-width:28px;height:28px;line-height:28px;font-size:1rem;text-align:center;color:#fff; "
+           target="_blank"
+           title="Compartilhar no Twitter"></a><a href="mailto:?subject=Segredos do Mundo | Nix, quem é? Origem, filhos e personificação da noite&body=Confira o seguinte link: https://segredosdomundo.r7.com/nix-deusa-historia/"
+           class="themess-mail rounded dim-on-hover bg-colorful d-inline-block text-decoration-none share-button email-icon"
+           style="min-width:28px;height:28px;line-height:28px;font-size:1rem;text-align:center;color:#fff; "
+           target="_blank"
+           title="Enviar via e-mail"></a>                    </div>
+                </div>
+            </div>
+        </div>
+	<div style = "clear: both; text-align: center; margin: 5px;">
+<ins class="adsbygoogle"
+     style="display:inline-block;width:330px;height:280px"
+     data-ad-client="ca-pub-1360360021251685"
+     data-ad-slot="5520440908"></ins>
+<script type="rocketlazyloadscript">
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+		            <div class="mt-3 text-center rounded border featured-img-wrapper">
+                <div class="bg-wrapper">
+                    <div data-bg="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite-375x230.jpg" class="bg-carrier rocket-lazyload" style=""></div>
+                </div>
+                <figure class="figure m-0">
+                    <picture class="featured-img">
+<source type="image/webp" data-lazy-srcset="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite-1024x627.jpg.webp" srcset="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%201024%20627&#039;%3E%3C/svg%3E"/>
+<img width="1024" height="627" src="data:image/svg+xml,%3Csvg%20xmlns=&#039;http://www.w3.org/2000/svg&#039;%20viewBox=&#039;0%200%201024%20627&#039;%3E%3C/svg%3E" alt="Nix, quem é? Origem, filhos e personificação da noite" data-lazy-src="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite-1024x627.jpg"/>
+</picture>
+<noscript><picture class="featured-img">
+<source type="image/webp" srcset="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite-1024x627.jpg.webp"/>
+<img width="1024" height="627" src="https://d5y9g7a5.rocketcdn.me/wp-content/uploads/2020/06/nix-quem-e-origem-filhos-e-personificacao-da-noite-1024x627.jpg" alt="Nix, quem é? Origem, filhos e personificação da noite"/>
+</picture>
+</noscript>
+					                        <figcaption class="mt-1 small dim">Imagem: Mitologia Helênica</figcaption>
+					                </figure>
+            </div>
+		    </div>
+    <div class="mt-4 content-wrapper-wrapper">
+        <div class="content-wrapper">
+            <div class="clearfix content mb-0-last">
+				
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<ins class="adsbygoogle" style="display:inline-block;width:330px;height:280px;" data-ad-client="ca-pub-1360360021251685" data-ad-slot="5520440908"></ins>
+                    <script type="rocketlazyloadscript">
+                     (adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+<p><span data-contrast="auto">Nix, conforme a história da <a href='https://segredosdomundo.r7.com/pegaso/' rel='dofollow' target='_blank'>mitologia grega</a>, era considerada uma das Deusas Primordiais sendo a personificação da noite profunda. Segundo a teogonia de Hesíodo, poema mitológico em 1022 versos hexâmetros escrito por Hesíodo no século VIII-VII </span><span data-contrast="auto">a.C</span><span data-contrast="auto">, a deusa Nix é citada, principalmente na narração do nascimento dos deuses gregos.</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<p><span data-contrast="auto">Com efeito, Nix também é vista como defensora das bruxas e feiticeiras e, além disso, deusa dos segredos noturnos. Ademais, controla a vida e a morte dos homens e dos deuses, atraindo respeito e temor. Assim sendo, até Zeus, deus dos trovões, a respeitava. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335551550&quot;:1,&quot;335551620&quot;:1,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<h2>Origem</h2>
+<p><span data-contrast="auto">Primeiramente, antes de mais nada, Nix é filha de Caos e a segunda figura a surgir do vazio, e, logo depois, seu irmão gêmeo Érebo, cuja personificação é a escuridão.</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span><span data-contrast="auto">Em seguida, aparece Gaia, a personificação da Terra, Tártaro, a <a href='https://segredosdomundo.r7.com/fauno/' rel='dofollow' target='_blank'>personificação</a> das trevas e Eros, a personificação do amor e da criação. Sendo assim, irmãos de Caos.</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<p><span data-contrast="auto">Em suma, Nix, assim como </span><span data-contrast="auto">Hades</span><span data-contrast="auto">, deus grego do submundo, ficava invisível ao usar um capuz. No entanto, a deusa da noite também surge em duas versões distintas. Ou como uma deusa benéfica simbolizando a beleza da noite ou como cruel mediante maldições e terror. Além disso, ela também é recebeu o título de Deusa da Morte, ou seja, a primeira rainha do mundo das Trevas. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335551550&quot;:1,&quot;335551620&quot;:1,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<div class="quads-ad-label quads-ad-label-new">Continua após a publicidade</div><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1360360021251685" data-ad-slot="2900121056"></ins>
+                    <script type="rocketlazyloadscript">
+                     (adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<p><span data-contrast="auto">Em </span><span data-contrast="auto">virtude</span><span data-contrast="auto"> de dons proféticos, Nix foi responsável pela criação da arma que Gaia entregou a Cronos para destronar Urano. Contudo, a deusa conhecia o segredo da imortalidade dos Deuses podendo tirá-la e transformar um Deus em mortal. Não obstante, foi o que fez com Cronos logo após ser destronado por Zeus.</span></p>
+<h2>Simbolismo</h2>
+<p>A mitologia ainda traz que  Nix recebeu outros nomes gregos, por exemplo Eufrone e Eulalia, ou seja, &#8220;Mãe do bom conselho&#8221;. <span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Em síntese, não há uma certeza sobre a localização do seu império, haja vista que alguns indicam o norte do Ponto-</span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Euxino</span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">, no país dos Cimérios. </span></p>
+<p><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Em contrapartida, outros falam da Espanha, &#8211; a Esméria. Na Itália, sobretudo, os povos viam Nix tanto coberta por estrelas acima da cabeça e archote derrubado, quanto também a representação de uma mulher nua, com longas asas de morcego e um facho de luz na mão.</span></p>
+<p><span data-contrast="auto">Contudo, outro <a href='https://segredosdomundo.r7.com/adonis/?utm_source=segredos&amp;utm_medium=cpc&amp;utm_campaign=ultimas' rel='dofollow' target='_blank'>simbolismo</a> atribuído a Nix era com uma coroa de papoulas e um manto negro, estrelado. Na mitologia grega, basicamente, a papoula estava associada a </span><span data-contrast="auto">Hipnos</span><span data-contrast="auto">, o deus do sono e filho de Nix. Ademais, era sua planta eleita e, portanto, representado com os frutos na mão. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335551550&quot;:1,&quot;335551620&quot;:1,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<div class="quads-ad-label quads-ad-label-new">Continua após a publicidade</div><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1360360021251685" data-ad-slot="2900121056"></ins>
+                    <script type="rocketlazyloadscript">
+                     (adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<p><span data-contrast="auto">Eventualmente, também há registros que de Nix aparece em um carro arrastado por cavalos pretos ou por dois mochos.  E ainda assim, a deusa da noite cobre a cabeça com um véu estrelado e uma lua minguante na testa ou como brincos.</span></p>
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<div class="quads-ad-label quads-ad-label-new">Continua após a publicidade</div><script type="rocketlazyloadscript" data-minify="1"
+
+            data-sizes="[300, 250]"
+            data-vendor="r7.com"
+
+            data-pos="island"
+
+            data-context="principal"
+
+            src="https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/r7/js/adPartner.min.js?ver=1649896148" defer></script>
+</div>
+
+<p><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Ademais, outras versões trazem a deusa da noite no mundo subterrâneo, entre </span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Hipnos</span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto"> e </span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Tânatos</span><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">, seus dois filhos. Logo, a representação de um garoto travando-lhe uma tocha, <a href='https://segredosdomundo.r7.com/cupido/' rel='dofollow' target='_blank'>símbolo do crepúsculo</a>. Pelo contrário, a versão dos romanos mostra sua representação ociosa e adormecida. </span></p>
+<p><span lang="PT-BR" xml:lang="PT-BR" data-contrast="auto">Por fim, dentre todo o simbolismo, constata-se que há uma <a href='https://segredosdomundo.r7.com/complexo-de-edipo/' rel='dofollow' target='_blank'>mistura de pesadelos, demônios e monstros</a>. Sendo assim, é por meio do inconsciente no sono noturno que surgem as criaturas.</span></p>
+<p><div class="rll-youtube-player" data-src="https://www.youtube.com/embed/jdJgaAsVKPk" data-id="jdJgaAsVKPk" data-query="feature=oembed"></div><noscript><iframe title="A ÚNICA DEUSA QUE ZEUS TINHA MEDO | #Shorts" width="500" height="281" src="https://www.youtube.com/embed/jdJgaAsVKPk?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></noscript></p>
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<div class="quads-ad-label quads-ad-label-new">Continua após a publicidade</div><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1360360021251685" data-ad-slot="2900121056"></ins>
+                    <script type="rocketlazyloadscript">
+                     (adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<h2>Filhos de Nix</h2>
+<p><span data-contrast="auto">Resumidamente, os filhos de Nix retratavam a hierarquia em poder para os deuses. Destaca-se que muitos deles eram divindades do mundo subterrâneo e ligados a forças irredutíveis. Entretanto, alguns descendentes da deusa da noite são abstrações personificados e há </span><span data-contrast="auto">variaçoes</span><span data-contrast="auto"> sobre seus respectivos mitos. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335551550&quot;:1,&quot;335551620&quot;:1,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<p><span data-contrast="auto">Na tradição Órfica, basicamente, o <a href='https://segredosdomundo.r7.com/criaturas-mitologicas/' rel='dofollow' target='_blank'>universo e deuses</a> primordiais vieram do Ovo Cósmico de Nix. Entre alguns poetas Nix era vista como mãe de Urano e de Gaia. Por conseguinte, Hesíodo se referiu a ela como Mãe dos Deuses e junto a </span><span data-contrast="auto">Érebo</span><span data-contrast="auto"> precediam tudo. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335551550&quot;:1,&quot;335551620&quot;:1,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<p><span data-contrast="auto">Os filhos de Nix, por fim, são poderosos e habitam o mundo inferior. Assim, detém poderes e forças. A história diz que Nix se uniu ao seu irmão gêmeo </span><span data-contrast="auto">Érebo</span><span data-contrast="auto">, e teve dois filhos: Éter e </span><span data-contrast="auto">Hemera</span><span data-contrast="auto">. Após isso, a deusa </span><span data-contrast="auto">gerou outros</span><span data-contrast="auto"> filhos sem união com outro ser. </span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></p>
+<h4>Lista dos filhos da deusa da noite:</h4>
+<ul>
+<li><span data-contrast="auto">Moros</span><span data-contrast="auto"> &#8211; personificação da sorte e do destino;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Queres ( </span><span data-contrast="auto">Daemones</span><span data-contrast="auto">) &#8211;  personificação da morte violenta e da fatalidade;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Tânato</span><span data-contrast="auto"> &#8211; personificação da morte e irmão gêmeo de Hipnos;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Hipnos &#8211; personificação da sonolência e o deus do sono, irmão gêmeo de Tânato;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Os </span><span data-contrast="auto">Oniros</span><span data-contrast="auto"> &#8211; mil personificações dos sonhos;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Momos &#8211; personificação do sarcasmo e da ironia;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Oizus</span><span data-contrast="auto"> &#8211; personificação da tristeza, angustia e miséria;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">As </span><span data-contrast="auto">Hespérides</span><span data-contrast="auto"> </span><span data-contrast="auto">&#8211; deusas</span><span data-contrast="auto"> primitivas e representam a primavera o espírito de fertilidade da natureza;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">As Moiras </span><span data-contrast="auto">&#8211; três</span><span data-contrast="auto"> irmãs impiedosas e deusas do destino;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Nêmesis &#8211; personificação do destino e vingança divina;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Apáte</span><span data-contrast="auto"> &#8211; personificação da fraude e engano;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Filotes</span><span data-contrast="auto"> (</span><span data-contrast="auto">Daemon</span><span data-contrast="auto">) </span><span data-contrast="auto">&#8211; personificação</span><span data-contrast="auto"> da amizade e carinho;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Geras (Daemon) &#8211; personificação da velhice;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Éris &#8211; deusa da discórdia;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Lyssa &#8211; personificação da ira e da loucura produzida pela raiva;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Epifron</span><span data-contrast="auto"> (</span><span data-contrast="auto">Daemon</span><span data-contrast="auto">) personificação da prudência, atenção e cuidado;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Hécate &#8211; deusa da magia negra e bruxaria;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Éter &#8211; Deus Primordial do céu acima do céu e do ar puro respirado pelas divindades;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">As Erínias &#8211; três irmãs que personificam a vingança, conhecidas também com As Fúrias;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Hemera &#8211; Deusa Primordial da luz;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Caronte </span><span data-contrast="auto">&#8211; barqueiro</span><span data-contrast="auto"> do mundo dos mortos;</span><span data-ccp-props="{&quot;201341983&quot;:0,&quot;335559739&quot;:160,&quot;335559740&quot;:259}"> </span></li>
+<li><span data-contrast="auto">Morfeu &#8211; deus dos sonhos.</span></li>
+</ul>
+<p><div class="rll-youtube-player" data-src="https://www.youtube.com/embed/q_rWvwqv8I4" data-id="q_rWvwqv8I4" data-query="start=4&amp;feature=oembed"></div><noscript><iframe title="TODOS OS FILHOS DE NIX, A DEUSA DA NOITE" width="500" height="281" src="https://www.youtube.com/embed/q_rWvwqv8I4?start=4&#038;feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></noscript></p>
+<div style="float:none;text-align:center;padding:0px 0 0px 0;">
+<div class="quads-ad-label quads-ad-label-new">Continua após a publicidade</div><ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px;" data-ad-client="ca-pub-1360360021251685" data-ad-slot="2900121056"></ins>
+                    <script type="rocketlazyloadscript">
+                     (adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<p>Por fim, você tem interesse em conhecer mais figuras da mitologia grega? Então conheça <a href='https://segredosdomundo.r7.com/temis/' rel='dofollow' target='_blank'>Têmis, quem é? Origem, lenda e personificação da deusa da justiça</a></p>
+<p>Fontes: <a href='http://eventosmitologiagrega.blogspot.com/2011/01/nyx-rainha-da-noite.html' rel='nofollow' target='_blank'>Mitologia Grega</a> <a href='https://deuseseherois.webnode.com.br/products/nix/' rel='nofollow' target='_blank'>Deuses e Heróis</a> <a href='https://mitologiagrega.net.br/filhos-de-nix-deusa-noite-profunda/' rel='nofollow' target='_blank'>Mitologia Grega BR</a></p>
+
+            </div>
+        </div>
+    </div>
+    <div class="after-content">
+		            <div class="mt-3">
+                <a href="https://segredosdomundo.r7.com/apollo-11/?utm_source=segredosdomundo&utm_medium=cpc&utm_campaign=proximo"
+                   class="btn btn-block btn-danger">Próxima página &raquo;</a>
+                <br>
+				
+		
+
+        <div class="mt-3 text-center">
+            <a href="https://www.instagram.com/segredosdomundo_/"
+               role="button"
+               class="btn btn-sm btn-outline-primary">Encontrou algum erro nesse artigo? Avise a gente!</a>
+        </div><br>
+		
+                <h3>Escolhidas para você</h3>
+                <div id="taboola-below-article-thumbnails"></div>
+                <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+                    window._taboola = window._taboola || [];
+                    _taboola.push({
+                        mode: 'alternating-thumbnails-a',
+                        container: 'taboola-below-article-thumbnails',
+                        placement: 'Below Article Thumbnails',
+                        target_type: 'mix'
+                    });
+                </script>
+                <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+                    window._taboola = window._taboola || [];
+                    _taboola.push({flush: true});
+                </script>
+
+
+    </div>
+</div></main></div></div></div><!-- #content -->
+<footer id="footer">
+				<div class="bg-other footer-row">
+    <div class="container">
+        <table style="width: 100%;">
+            <tbody>
+            <tr>
+                <td class="lh-1"
+                    style="padding: 1rem 0;">
+                    <a href="https://segredosdomundo.r7.com/anuncie/"
+                       style="margin-right:1rem;">Anuncie</a>
+                    <a href="https://segredosdomundo.r7.com/fale-conosco/">Fale Conosco</a>
+                </td>
+                <td class="lh-1"
+                    style="padding: 1rem 0; text-align: right;">
+					<a href="https://www.facebook.com/Segredos.Mundo"
+           title="Conecte-se com a gente no Facebook"
+           class="d-inline-block social-icon themess-facebook facebook-icon"
+           target="_blank"></a>                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="bg-primary footer-row">
+    <div class="container">
+        <table style="width: 100%;">
+            <tbody>
+            <tr>
+                <td class="lh-1"
+                    style="padding: 1.5rem 0; width: 130px;">
+                    <img width="317" height="60" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20317%2060'%3E%3C/svg%3E"
+                         alt="Segredos do Mundo" data-lazy-src="https://d5y9g7a5.rocketcdn.me/wp-content/themes/ss/dist/image/logo-white.png"><noscript><img width="317" height="60" src="https://d5y9g7a5.rocketcdn.me/wp-content/themes/ss/dist/image/logo-white.png"
+                         alt="Segredos do Mundo"></noscript>
+                </td>
+                <td class="lh-1"
+                    style="padding: 1.5rem 0; text-align: right;">
+                    <small>&copy; 2021</small>
+                    <small>- Segredos do Mundo</small>
+                    <small>- Todos os Direitos Reservados</small>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>		    </footer></div><!-- #page -->
+        <div class="modal fade" id="collapsable-search-form" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <p class="lead text-dark">Buscar artigos</p>
+						<form role="search" class="search-form" action="https://segredosdomundo.r7.com">
+    <div class="d-flex">
+        <input type="search" class="form-control mr-2"
+               placeholder="Estou procurando por..."
+               aria-label=""
+               value="" name="s" required>
+        <button type="submit" class="btn btn-primary">&raquo;</button>
+    </div>
+</form>                    </div>
+                </div>
+            </div>
+        </div>
+	<script id='post-views-counter-frontend-js-extra'>
+var pvcArgsFrontend = {"mode":"js","postID":"76104","nonce":"9c60686f9b","requestURL":"https:\/\/segredosdomundo.r7.com\/wp-admin\/admin-ajax.php"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/wp-content/plugins/post-views-counter/js/frontend.js?ver=1649896148' id='post-views-counter-frontend-js' defer></script>
+<script type="rocketlazyloadscript" id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/web-stories\/|\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/segredosdomundo.r7.com","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script type="rocketlazyloadscript" id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script id='ss-bundle-js-js-extra'>
+var _l10n = {"wp_home":"https:\/\/segredosdomundo.r7.com","ajax_url":"https:\/\/segredosdomundo.r7.com\/wp-admin\/admin-ajax.php","_wp_theme_features":{"core-block-patterns":true,"widgets-block-editor":true,"automatic-feed-links":true,"title-tag":true,"post-thumbnails":true,"html5":[["search-form","comment-form","comment-list","script","style","caption","audio"]],"customize-selective-refresh-widgets":true,"disable-custom-colors":true,"menus":true,"widgets":true}};
+var wpcf7 = {"apiSettings":{"root":"https:\/\/segredosdomundo.r7.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"cached":"1"};
+</script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/wp-content/themes/ss/dist/bundle.js?ver=1649896148' id='ss-bundle-js-js' defer></script>
+<script src='https://d5y9g7a5.rocketcdn.me/wp-includes/js/wp-embed.min.js?ver=5.8.2' id='wp-embed-js' defer></script>
+<script type="rocketlazyloadscript" data-minify="1" src='https://d5y9g7a5.rocketcdn.me/wp-content/cache/min/1/wp-content/plugins/quick-adsense-reloaded/assets/js/ads.js?ver=1649896148' id='quads-admin-ads-js' defer></script>
+      <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+         if (typeof wpquads_adblocker_check === 'undefined') {
+             wpquads_adblocker_check = false;
+         } else {
+             wpquads_adblocker_check = true;
+         }
+      </script>
+         <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+      if (typeof ga !== 'undefined' && wpquads_adblocker_check === false) {
+          ga('send', 'event', 'Blocking Ads', 'true', {'nonInteraction': true});
+      } else if (typeof _gaq !== 'undefined' && wpquads_adblocker_check === false) {
+          _gaq.push(['_trackEvent', 'Blocking Ads', 'true', undefined, undefined, true]);
+      }
+   </script>
+      <!--noptimize--><style>.quads-highlight-adblocked { outline:4px solid #ef4000;background-color:#ef4000;color:#ffffff;text-align: center;display:block;}.quads-highlight-adblocked:after {content:'Please allow this ad by disabling your ad blocker';font-size: 0.8em; display:inline-block;}</style>
+   <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+      (function (d, w) {
+
+          var addEvent1 = function (obj, type, fn) {
+              if (obj.addEventListener)
+                  obj.addEventListener(type, fn, false);
+              else if (obj.attachEvent)
+                  obj.attachEvent('on' + type, function () {
+                      return fn.call(obj, window.event);
+                  });
+          };
+
+          function highlight_adblocked_ads() {
+              try {
+                  var ad_wrappers = document.querySelectorAll('div[id^="quads-ad"]')
+              } catch (e) {
+                  return;
+              }
+              for (i = 0; i < ad_wrappers.length; i++) {
+                  ad_wrappers[i].className += ' quads-highlight-adblocked';
+                  ad_wrappers[i].setAttribute('style', 'display:block !important');
+              }
+          }
+
+          addEvent1(w, 'load', function () {
+              if (wpquads_adblocker_check === undefined || wpquads_adblocker_check === false) {
+                  highlight_adblocked_ads();
+              }
+          });
+
+      })(document, window);
+   </script>
+   <script>window.lazyLoadOptions={elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}};window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async src="https://d5y9g7a5.rocketcdn.me/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script><script>function lazyLoadThumb(e){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script><!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-52301701-1"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-52301701-1');
+</script>
+
+</body>
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1651071446 -->
